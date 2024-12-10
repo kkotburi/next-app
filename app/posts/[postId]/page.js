@@ -1,9 +1,18 @@
 import React from "react";
 
-export const metadata = {
-  title: "Detail Page",
-  description: "Test of Metadata",
-};
+export async function generateMetadata({ params, searchParams }, parent) {
+  // read route params
+  const id = params.postId;
+
+  // fetch data
+  const post = await fetch(
+    `https://jsonplaceholder.typicode.com/posts/${id}`
+  ).then((res) => res.json());
+
+  return {
+    title: post.title,
+  };
+}
 
 const DetailPage = (props) => {
   const { params } = props;
