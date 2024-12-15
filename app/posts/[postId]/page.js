@@ -33,3 +33,5 @@ const DetailPage = (props) => {
 };
 
 export default DetailPage;
+
+// Data Fetching
