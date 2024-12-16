@@ -35,3 +35,7 @@ const DetailPage = (props) => {
 export default DetailPage;
 
 // Data Fetching
+
+// 1. Server Side Rendering
+// 2. Static Site Generation
+// 3. Incrementral Static Generation
