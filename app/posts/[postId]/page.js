@@ -17,25 +17,55 @@ import React from "react";
 //   };
 // }
 
-const DetailPage = (props) => {
-  const { params } = props;
-  const { postId } = params;
+// const DetailPage = (props) => {
+//   const { params } = props;
+//   const { postId } = params;
 
-  const router = useRouter();
+//   const router = useRouter();
 
-  return (
-    <div>
-      <Link href="/">Home</Link>
-      <div onClick={() => router.push("/")}>Home</div>
-      <div>DetailPage: {postId}</div>
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       <Link href="/">Home</Link>
+//       <div onClick={() => router.push("/")}>Home</div>
+//       <div>DetailPage: {postId}</div>
+//     </div>
+//   );
+// };
 
-export default DetailPage;
+// export default DetailPage;
 
 // Data Fetching
 
 // 1. Server Side Rendering
 // 2. Static Site Generation
 // 3. Incrementral Static Generation
+
+const getPost = async (postId) => {
+  const response = await fetch(
+    // `http://localhost:4000/posts/${postId}`
+    `https://jsonplaceholder.typicode.com/posts/${postId}`,
+    {
+      cache: "no-store",
+    }
+  );
+  const data = await response.json();
+
+  return data;
+};
+
+const DetailPost = async (props) => {
+  const { params } = props;
+  const { postId } = params;
+  const post = await getPost(postId);
+
+  return (
+    <div>
+      DetailPost: {post.title}
+      {/* {post.id}
+      <p>Title: {post.title}</p>
+      <p>Body: {post.body}</p> */}
+    </div>
+  );
+};
+
+export default DetailPost;
