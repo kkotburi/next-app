@@ -41,13 +41,9 @@ import React from "react";
 // 3. Incrementral Static Generation
 
 const getPost = async (postId) => {
-  const response = await fetch(
-    // `http://localhost:4000/posts/${postId}`
-    `https://jsonplaceholder.typicode.com/posts/${postId}`,
-    {
-      cache: "no-store",
-    }
-  );
+  const response = await fetch(`http://localhost:4000/posts/${postId}`, {
+    cache: "no-store",
+  });
   const data = await response.json();
 
   return data;
@@ -60,10 +56,10 @@ const DetailPost = async (props) => {
 
   return (
     <div>
-      DetailPost: {post.title}
-      {/* {post.id}
+      DetailPost:
+      {post.id}
       <p>Title: {post.title}</p>
-      <p>Body: {post.body}</p> */}
+      <p>Body: {post.body}</p>
     </div>
   );
 };
