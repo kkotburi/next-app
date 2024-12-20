@@ -35,15 +35,12 @@ import React from "react";
 // export default DetailPage;
 
 // Data Fetching
-
 // 1. Server Side Rendering
 // 2. Static Site Generation
 // 3. Incrementral Static Generation
 
 const getPost = async (postId) => {
-  const response = await fetch(`http://localhost:4000/posts/${postId}`, {
-    cache: "no-store",
-  });
+  const response = await fetch(`http://localhost:4000/posts/${postId}`);
   const data = await response.json();
 
   return data;
