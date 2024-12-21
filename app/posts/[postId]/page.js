@@ -40,7 +40,10 @@ import React from "react";
 // 3. Incrementral Static Generation
 
 const getPost = async (postId) => {
-  const response = await fetch(`http://localhost:4000/posts/${postId}`);
+  const response = await fetch(`http://localhost:4000/posts/${postId}`, {
+    cache: "no-store",
+    // next: { revalidate: 10 },
+  });
   const data = await response.json();
 
   return data;
